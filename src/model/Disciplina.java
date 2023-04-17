@@ -25,7 +25,7 @@ public class Disciplina {
     }
 
     public void setNome(String nome) throws Exception{
-        Validacao.validarNomeDisciplina(nome);
+        Validacao.validarNome(nome);
         this.nome = nome;
     }
 
@@ -34,7 +34,7 @@ public class Disciplina {
     }
 
     public void setNumCreditos(int numCreditos) throws Exception {
-        Validacao.validarNumCreditos(numCreditos);
+        Validacao.validarNumCreditosDisciplina(numCreditos);
         this.numCreditos = numCreditos;
     }
 }

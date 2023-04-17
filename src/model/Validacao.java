@@ -30,7 +30,7 @@ public class Validacao {
         }
     }
 
-    public static void validarNomeDisciplina(String nome) throws Exception{
+    public static void validarNome(String nome) throws Exception{
         if(nome == null){
             throw new Exception("O nome não pode ser nulo!!");
         }
@@ -42,7 +42,7 @@ public class Validacao {
         }
     }
 
-    public static void validarNumCreditos(int creditos) throws Exception{
+    public static void validarNumCreditosDisciplina(int creditos) throws Exception{
         if(creditos < TAM_MIN_CREDITOS){
             throw new Exception("Número mínimo de créditos é "+TAM_MIN_CREDITOS);
         }
@@ -50,4 +50,55 @@ public class Validacao {
             throw new Exception("Número máximo de créditos é "+TAM_MAX_CREDITOS);
         }
     }
+
+    public static void validarMatrFuncional(String matrFuncional) throws Exception{
+        int m = Integer.parseInt(matrFuncional);
+        for(int i = 0 ; i < matrFuncional.length() ; i++){
+            char c = matrFuncional.charAt(i);
+            if(!Character.isDigit(c)){
+                throw new Exception("Foi encontrado uma letra na posição "+(i+1)+", matrícula só deve ter múmeros.");
+            }
+        }
+        if(matrFuncional == null){
+            throw new Exception("Matrícula Funcional não poder ser nula!!");
+        }
+        if(m < 1000 || m > 9999){
+            throw new Exception("Matrícula Funcional deve possuir 4 dígitos");
+        }
+    }
+
+    public static void validarTitulacao(String titulacao) throws Exception{
+        if(titulacao == null){
+            throw new Exception("Titulação não pode ser nulo!!");
+        }
+        if(titulacao != "Especialista" || titulacao != "Mestre" || titulacao != "Doutor"){
+            throw new Exception("Titulação inválida!!");
+        }
+
+    }
+
+    public static void validarMatriculaAluno(String matricula) throws Exception{
+        if(matricula == null){
+            throw new Exception("Matricula não pode ser nulo!!");
+        }
+        if(!matricula.matches("[0-9]{10}")){
+            throw new Exception("Matrícula deve possuir apenas números e seu tamanho é de 10");
+        }
+    }
+
+    public static void validarCodigoCurso(String codigo) throws Exception{
+        if(!codigo.matches("[A-Z]{3}")){
+            throw new Exception("Código de Curso deve possuir  3 caracteres maiúsculos");
+        }
+    }
+
+    public static void validarTipoCurso(String tipo) throws Exception{
+        if(tipo == null){
+            throw new Exception("Tipo de curso não pode ser nulo!!");
+        }
+        if(tipo != "Curso Superior de Tecnologia" || tipo != "Bacharelado" || tipo != "Licenciatura"){
+            throw new Exception("Tipo de curso inválido!!");
+        }
+    }
+
 }

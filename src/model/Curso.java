@@ -6,7 +6,7 @@ public class Curso {
     private String tipo;
     private int cargaHoraria;
 
-    public Curso(String codigo, String nome, String tipo, int cargaHoraria){
+    public Curso(String codigo, String nome, String tipo, int cargaHoraria) throws Exception{
         setCodigo(codigo);
         setNome(nome);
         setTipo(tipo);
@@ -17,7 +17,8 @@ public class Curso {
         return codigo;
     }
 
-    public void setCodigo(String codigo) {
+    public void setCodigo(String codigo) throws Exception {
+        Validacao.validarCodigoCurso(codigo);
         this.codigo = codigo;
     }
 
@@ -25,7 +26,8 @@ public class Curso {
         return nome;
     }
 
-    public void setNome(String nome) {
+    public void setNome(String nome) throws Exception {
+        Validacao.validarNome(nome);
         this.nome = nome;
     }
 
@@ -37,11 +39,30 @@ public class Curso {
         this.tipo = tipo;
     }
 
+    public void validarCargaHoraria(int cargaHoraria) throws Exception{
+        if(this.tipo == "Curso Superior de Tecnologia"){
+           if(cargaHoraria < 1400 && cargaHoraria > 2800){
+               throw new Exception("Carga horária inválida para "+this.tipo);
+           }
+        }
+        if(this.tipo == "Bacharelado"){
+            if(cargaHoraria < 3000 && cargaHoraria > 6400){
+                throw new Exception("Carga horária inválida para "+this.tipo);
+            }
+        }
+        if(this.tipo == "Licenciatura"){
+            if(cargaHoraria < 2880 && cargaHoraria > 3400){
+                throw new Exception("Carga horária inválida para "+this.tipo);
+            }
+        }
+    }
+
     public int getCargaHoraria() {
         return cargaHoraria;
     }
 
-    public void setCargaHoraria(int cargaHoraria) {
+    public void setCargaHoraria(int cargaHoraria) throws Exception {
+        validarCargaHoraria(cargaHoraria);
         this.cargaHoraria = cargaHoraria;
     }
 }
