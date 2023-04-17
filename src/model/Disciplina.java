@@ -5,7 +5,7 @@ public class Disciplina {
     private String nome;
     private int numCreditos;
 
-    public Disciplina(String codigo, String nome, int numCreditos){
+    public Disciplina(String codigo, String nome, int numCreditos) throws Exception{
         setCodigo(codigo);
         setNome(nome);
         setNumCreditos(numCreditos);
@@ -15,7 +15,8 @@ public class Disciplina {
         return codigo;
     }
 
-    public void setCodigo(String codigo) {
+    public void setCodigo(String codigo) throws Exception {
+        Validacao.validarCodigoDisciplina(codigo);
         this.codigo = codigo;
     }
 
@@ -23,7 +24,8 @@ public class Disciplina {
         return nome;
     }
 
-    public void setNome(String nome) {
+    public void setNome(String nome) throws Exception{
+        Validacao.validarNomeDisciplina(nome);
         this.nome = nome;
     }
 
@@ -31,7 +33,8 @@ public class Disciplina {
         return numCreditos;
     }
 
-    public void setNumCreditos(int numCreditos) {
+    public void setNumCreditos(int numCreditos) throws Exception {
+        Validacao.validarNumCreditos(numCreditos);
         this.numCreditos = numCreditos;
     }
 }
