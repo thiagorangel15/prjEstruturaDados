@@ -15,4 +15,14 @@ public class Aluno extends Pessoa{
         Validacao.validarMatriculaAluno(matr);
         this.matr = matr;
     }
+    
+    
+    public String toString() {
+        String resultado = "Meu nome é " + this.getNome();
+        resultado += ", eu tenho " + this.getIdade() + " anos";
+        resultado += " e meu cpf é " + this.getCpf();
+        resultado    += " e minha matricula é "+ this.matr;
+
+        return resultado;
+    }
 }

@@ -26,4 +26,14 @@ public class Professor extends Pessoa{
         Validacao.validarTitulacao(titulacao);
         this.titulacao = titulacao;
     }
+    
+    public String toString() {
+        String resultado = "Meu nome é " + this.getNome();
+        resultado += ", eu tenho " + this.getIdade() + " anos";
+        resultado += " e meu cpf é " + this.getCpf();
+        resultado += " e minha matricula funcional é " + this.matrFuncional;
+        resultado += " e minha  titulação é " + this.titulacao;
+
+        return resultado;
+    }
 }
