@@ -37,4 +37,11 @@ public class Disciplina {
         Validacao.validarNumCreditosDisciplina(numCreditos);
         this.numCreditos = numCreditos;
     }
+    
+    public String toString() {
+        String resultado = "Meu codigo é " + this.codigo;
+        resultado += " meu nome é " + this.nome;
+        resultado += " meu numero de creditos é " + this.numCreditos;
+        return resultado;
+    }
 }

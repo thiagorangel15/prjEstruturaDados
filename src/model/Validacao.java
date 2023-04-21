@@ -71,7 +71,7 @@ public class Validacao {
         if(titulacao == null){
             throw new Exception("Titulação não pode ser nulo!!");
         }
-        if(titulacao != "Especialista" || titulacao != "Mestre" || titulacao != "Doutor"){
+        if(!(titulacao.equals("Especialista") || titulacao.equals("Mestre")  || titulacao.equals("Doutor") )){
             throw new Exception("Titulação inválida!!");
         }
 
@@ -87,7 +87,7 @@ public class Validacao {
     }
 
     public static void validarCodigoCurso(String codigo) throws Exception{
-        if(!codigo.matches("[A-Z]{3}")){
+        if(!(codigo.matches("[A-Z]{3}"))){
             throw new Exception("Código de Curso deve possuir  3 caracteres maiúsculos");
         }
     }
@@ -96,7 +96,7 @@ public class Validacao {
         if(tipo == null){
             throw new Exception("Tipo de curso não pode ser nulo!!");
         }
-        if(tipo != "Curso Superior de Tecnologia" || tipo != "Bacharelado" || tipo != "Licenciatura"){
+        if(!(tipo.equals("Curso Superior de Tecnologia") || tipo.equals("Bacharelado") || tipo.equals("Licenciatura"))){
             throw new Exception("Tipo de curso inválido!!");
         }
     }

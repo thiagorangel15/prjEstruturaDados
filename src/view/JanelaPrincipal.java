@@ -47,14 +47,32 @@ public class JanelaPrincipal extends JFrame {
 		contentPane.add(btAluno);
 		
 		JButton btProfessor = new JButton("Professor");
+		btProfessor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JanelaProfessor jp = new JanelaProfessor();
+				jp.setVisible(true);
+			}
+		});
 		btProfessor.setBounds(283, 45, 89, 23);
 		contentPane.add(btProfessor);
 		
 		JButton btCurso = new JButton("Curso");
+		btCurso.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JanelaCurso jc = new JanelaCurso();
+				jc.setVisible(true);
+			}
+		});
 		btCurso.setBounds(38, 110, 89, 23);
 		contentPane.add(btCurso);
 		
 		JButton btDisciplina = new JButton("Disciplina");
+		btDisciplina.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JanelaDisciplina jd = new JanelaDisciplina();
+				jd.setVisible(true);
+			}
+		});
 		btDisciplina.setBounds(160, 110, 89, 23);
 		contentPane.add(btDisciplina);
 		

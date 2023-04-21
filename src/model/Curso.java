@@ -40,19 +40,19 @@ public class Curso {
     }
 
     public void validarCargaHoraria(int cargaHoraria) throws Exception{
-        if(this.tipo == "Curso Superior de Tecnologia"){
-           if(cargaHoraria < 1400 && cargaHoraria > 2800){
-               throw new Exception("Carga horária inválida para "+this.tipo);
+        if(this.tipo.equals("Curso Superior de Tecnologia")){
+           if(cargaHoraria < 1400 || cargaHoraria > 2800){
+               throw new Exception("Carga horária inválida para "+this.tipo + " precisa ser entre 1400 e 2800");
            }
         }
-        if(this.tipo == "Bacharelado"){
-            if(cargaHoraria < 3000 && cargaHoraria > 6400){
-                throw new Exception("Carga horária inválida para "+this.tipo);
+        if(this.tipo.equals("Bacharelado")){
+            if(cargaHoraria < 3000 || cargaHoraria > 6400){
+                throw new Exception("Carga horária inválida para "+this.tipo + " precisa ser entre 3000  e 6400");
             }
         }
-        if(this.tipo == "Licenciatura"){
-            if(cargaHoraria < 2880 && cargaHoraria > 3400){
-                throw new Exception("Carga horária inválida para "+this.tipo);
+        if(this.tipo.equals("Licenciatura")){
+            if(cargaHoraria < 2880 || cargaHoraria > 3400){
+                throw new Exception("Carga horária inválida para "+this.tipo +  " precisa ser entre 2880 e 3400");
             }
         }
     }
@@ -64,5 +64,13 @@ public class Curso {
     public void setCargaHoraria(int cargaHoraria) throws Exception {
         validarCargaHoraria(cargaHoraria);
         this.cargaHoraria = cargaHoraria;
+    }
+    
+    public String toString() {
+        String resultado = "Meu codigo é " + this.codigo;
+        resultado += " meu nome é " + this.nome;
+        resultado += " meu tipo é " + this.tipo;
+        resultado += " minha carga horaria é " + this.cargaHoraria;
+        return resultado;
     }
 }
