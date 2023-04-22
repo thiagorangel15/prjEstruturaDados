@@ -1,11 +1,17 @@
 package model;
 
-public class Pessoa { // o extends Object é desnecessário...
+import java.io.Serializable;
+
+public class Pessoa implements Serializable { // o extends Object é desnecessário...
 
     final public static int TAM_MAX_NOME = 40;
     final public static int TAM_CPF      = 14;
     final public static int MIN_IDADE    = 0;
     final public static int MAX_IDADE    = 130;
+    final public static int NUM_MAX_PESSOAS = 10;
+    
+    private static Pessoa[] listaPessoas = new Pessoa[Pessoa.NUM_MAX_PESSOAS];
+    private static int numPessoas = 0;
 
     //---------------------------------------------------
     // DECLARAÇÃO DOS ATRIBUTOS DA CLASSE PESSOA
@@ -38,7 +44,37 @@ public class Pessoa { // o extends Object é desnecessário...
         this.setCpf(c);
         this.setNome(n);
         this.setIdade(i);
+        
+        Pessoa.listaPessoas[Pessoa.numPessoas++] = this;
     }
+    public static int getNumPessoas() {
+		return Pessoa.numPessoas;
+	}
+	
+	/**
+	 * Retorna a lista de pessoas
+	 * @return
+	 */
+	public static Pessoa[] getListaPessoas() {
+		return Pessoa.listaPessoas;
+	}
+	
+	/**
+	 * Atualiza a lista de pessoas
+	 * @return
+	 */
+	public static void setListaPessoas(Pessoa[] novaLista) {
+		Pessoa.listaPessoas = novaLista;
+		
+		for(int i = 0; i < Pessoa.NUM_MAX_PESSOAS; i++) {
+			if(Pessoa.listaPessoas[i] != null)
+				System.out.println(Pessoa.listaPessoas[i]);
+			else {
+				Pessoa.numPessoas = i;
+				break;
+			}
+		}
+	}
 
     /**
      * Obtem o estado do atributo cpf do objeto Pessoa

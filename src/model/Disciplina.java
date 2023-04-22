@@ -1,17 +1,67 @@
 package model;
 
-public class Disciplina {
+import java.io.Serializable;
+
+public class Disciplina implements Serializable{
+	
+	final public static int NUM_MAX_DISCIPLINAS = 10;
+	
     private String codigo;
     private String nome;
     private int numCreditos;
+    
+    private static Disciplina[] listaDisciplinas = new Disciplina[Disciplina.NUM_MAX_DISCIPLINAS];
+    private static int numDisciplinas = 0;
 
     public Disciplina(String codigo, String nome, int numCreditos) throws Exception{
         setCodigo(codigo);
         setNome(nome);
         setNumCreditos(numCreditos);
+        
+        Disciplina.listaDisciplinas[Disciplina.numDisciplinas++] = this;
     }
 
-    public String getCodigo() {
+    
+    
+    
+    public static Disciplina[] getListaDisciplinas() {
+		return listaDisciplinas;
+	}
+
+
+
+
+	public static void setListaDisciplinas(Disciplina[] listaDisciplinas) {
+		Disciplina.listaDisciplinas = listaDisciplinas;
+		
+		for(int i = 0; i < Disciplina.NUM_MAX_DISCIPLINAS ; i++) {
+			if(Disciplina.listaDisciplinas[i] != null)
+				System.out.println(Disciplina.listaDisciplinas[i]);
+			else {
+				Disciplina.numDisciplinas = i;
+				break;
+			}
+		}
+	}
+
+
+
+
+	public static int getNumDisciplinas() {
+		return numDisciplinas;
+	}
+
+
+
+
+	public static void setNumDisciplinas(int numDisciplinas) {
+		Disciplina.numDisciplinas = numDisciplinas;
+	}
+
+
+
+
+	public String getCodigo() {
         return codigo;
     }
 

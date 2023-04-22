@@ -1,19 +1,65 @@
 package model;
 
-public class Curso {
+import java.io.Serializable;
+
+public class Curso implements Serializable {
+	
+	final public static int NUM_MAX_CURSOS = 10;
+	
     private String codigo;
     private String nome;
     private String tipo;
     private int cargaHoraria;
+    
+    private static Curso[] listaCursos = new Curso[Curso.NUM_MAX_CURSOS];
+    private static int numCursos = 0;
+    		
 
     public Curso(String codigo, String nome, String tipo, int cargaHoraria) throws Exception{
         setCodigo(codigo);
         setNome(nome);
         setTipo(tipo);
         setCargaHoraria(cargaHoraria);
+        
+        Curso.listaCursos[Curso.numCursos++] = this;
     }
+    
+    
 
-    public String getCodigo() {
+    public static Curso[] getListaCursos() {
+		return listaCursos;
+	}
+
+
+
+	public static void setListaCursos(Curso[] listaCursos) {
+		Curso.listaCursos = listaCursos;
+		
+		for(int i = 0; i < Curso.NUM_MAX_CURSOS; i++) {
+			if(Curso.listaCursos[i] != null)
+				System.out.println(Curso.listaCursos[i]);
+			else {
+				Curso.numCursos = i;
+				break;
+			}
+		}
+	}
+
+
+
+	public static int getNumCursos() {
+		return numCursos;
+	}
+
+
+
+	public static void setNumCursos(int numCursos) {
+		Curso.numCursos = numCursos;
+	}
+
+
+
+	public String getCodigo() {
         return codigo;
     }
 
